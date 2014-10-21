@@ -1,0 +1,14 @@
+Package: pacmanDependencies
+Type: Package
+Title: Generate Package Dependencies
+Version: 0.1.0
+Date: 2014-10-20
+Author: Tyler Rinker
+Maintainer: Tyler Rinker <tyler.rinker@gmail.com>
+Description: An extension of the pacman package that explores package dependencies through a network graph.  This concept is based on mran's Dependencies Graphs.
+License: What license is it under?
+License: GPL-2
+LazyData: TRUE
+Depends: R (>= 3.0.0), pacman
+Imports: qdapTools (>= 1.0.3), igraph
+
