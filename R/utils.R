@@ -42,7 +42,7 @@ reshape_dependencies <- function(x, ...){
 
     deps <- lapply(x, function(y) {
         y2 <- setNames(lapply(y, function(z) {
-            m <- list2df(p_un_R(p_dependecies(z)), "Dependency", "Type")
+            m <- list2df(p_un_R(p_dependencies(z)), "Dependency", "Type")
             m <- m[m[["Dependency"]] %in% x_deps, ] 
             m
         }), y)

@@ -5,16 +5,17 @@
 #' @param package Character vector containing packages to load.
 #' @return Returns a list of package dependencies.
 #' @export
+#' @examples
+#' \dontrun{
 #' pacman::p_load(pacman)
-#' (x<- p_dependecies(pacman))
+#' (x<- p_dependencies(pacman))
 #' plot(x)
 #' 
-#' \dontrun{
 #' pacman::p_load(qdap)
-#' (m <- p_dependecies(qdap))
+#' (m <- p_dependencies(qdap))
 #' plot(m)
 #' }
-p_dependecies <- function(package) {
+p_dependencies <- function(package) {
     if (!object_check(package) || !is.character(package)) {
         package <- as.character(substitute(package))
     }
@@ -74,17 +75,17 @@ plot.p_dependencies <- function(x, legend = TRUE, legend.x=-1.5,
 
     dat[["edge.color"]] <- qdapTools::lookup(dat[["Type"]], key)
     myplot <- igraph::graph.data.frame(dat, directed=TRUE)
-    V(myplot)$color <- NA
-    V(myplot)$color[V(myplot)$name %in% attributes(x)[["package"]]] <- "orange"
-    V(myplot)$color[V(myplot)$name %in% attributes(x)[["package"]]] <- "orange"
-    V(myplot)$frame.color <- NA
-    V(myplot)$frame.color[V(myplot)$name %in% attributes(x)[["package"]]] <- "black"
-    V(myplot)$label.color <- "black"
-    V(myplot)$label.family <- "sans"
-    V(myplot)$label.cex <- .85
-    V(myplot)$label.dist <- .01
-    E(myplot)$arrow.size <- .5
-    E(myplot)$color <- dat[["edge.color"]]
+    igraph::V(myplot)$color <- NA
+    igraph::V(myplot)$color[igraph::V(myplot)$name %in% attributes(x)[["package"]]] <- "orange"
+    igraph::V(myplot)$color[igraph::V(myplot)$name %in% attributes(x)[["package"]]] <- "orange"
+    igraph::V(myplot)$frame.color <- NA
+    igraph::V(myplot)$frame.color[igraph::V(myplot)$name %in% attributes(x)[["package"]]] <- "black"
+    igraph::V(myplot)$label.color <- "black"
+    igraph::V(myplot)$label.family <- "sans"
+    igraph::V(myplot)$label.cex <- .85
+    igraph::V(myplot)$label.dist <- .01
+    igraph::E(myplot)$arrow.size <- .5
+    igraph::E(myplot)$color <- dat[["edge.color"]]
     igraph::plot.igraph(myplot)
     if (legend) {
         legend(x=legend.x, y=legend.y, cex=legend.cex, 
